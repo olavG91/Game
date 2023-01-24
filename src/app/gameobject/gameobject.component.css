@@ -1,0 +1,25 @@
+img {
+    width: 100%;
+    object-fit: contain;
+    height: 100%;
+    position: absolute;
+    z-index: 1000;
+    left:0;
+    right:0;
+    top: 0;
+}
+
+ img {
+    animation: moleMove 0.1s ease-in-out;
+}
+
+@keyframes moleMove {
+    0% {
+        
+        transform: translateY(20%);
+    }
+    100% {
+        
+        transform: translateY(0);
+    }
+}

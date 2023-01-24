@@ -91,6 +91,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "Game:build:production",
+            "firebaseProject": "whackamole-27f59",
+            "firebaseHostingSite": "whackamole-27f59"
+          }
         }
       }
     }

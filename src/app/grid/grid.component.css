@@ -1,0 +1,65 @@
+.game {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 700px;
+    height: 700px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 100px 100px 100px 100px;
+    grid-gap: 4px;
+}
+
+.col {
+    background-color: #524141;
+    padding: 10px;
+    border: 4px solid #1d1a1a;
+    border-radius: 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.colActive {
+
+    /* background-color: blue; */
+    position: relative;
+
+}
+
+
+.colActive:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: #1d1a1a;
+    /* animation: dig 0.2s ease-in-out; */
+
+}
+
+
+@keyframes dig {
+    0% {
+        transform: scale(0);
+
+    }
+
+    100% {
+        transform: scale(1);
+
+    }
+}
+
+.colActive img {
+    animation: moleMove 1s ease-in-out;
+}
+

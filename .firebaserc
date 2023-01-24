@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "whackamole-27f59": {
+      "hosting": {
+        "Game": [
+          "whackamole-27f59"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "whackamole-27f59"
+  }
+}

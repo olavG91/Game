@@ -1,0 +1,5 @@
+<div class="container">
+    <div class="grid">
+        <app-gameobject class="col" [visible]="gameObject.visible" (click)="clickGameobject(i)" [ngClass]="{'colActive': gameObject.visible}" [id]="i" *ngFor="let gameObject of gameManager.getRows; index as i"></app-gameobject>
+    </div>
+</div>
