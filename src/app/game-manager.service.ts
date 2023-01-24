@@ -19,8 +19,13 @@ export class GameManagerService {
 
   private bestTime = 0;
 
-  private timeLeft;
+  private gameCount;
+  timeLeft = 60;
 
+  points = 0;
+
+  registered:boolean = false;
+  username:string = "";
   constructor() {
 
     for (let i = 0; i < 25; i++) {
@@ -40,6 +45,12 @@ export class GameManagerService {
     return this.rows;
   }
 
+  registerUser(user:string){
+
+    this.username = user;
+    this.registered = true;
+
+  }
   showRandom() {
     if (this.visibleCounter < 4) {
       let randomIndex = Math.floor(Math.random() * this.rows.length);
@@ -68,16 +79,21 @@ export class GameManagerService {
 
     this.gameTimer = setTimeout(() => {
       clearInterval(this.timer);
+      clearInterval(this.gameTimer);
+      clearInterval(this.gameCount);
       this.gameStarted = false;
-    }, 100000);
+      this.timeLeft = 60;
+    }, 60000);
 
-    
+    this.gameCount = setInterval(() => {
+      this.timeLeft = this.timeLeft - 1;
+    }, 1000);
 
   }
 
   clickGameobject(index: number) {
 
-    this.rows[index].visible = false;
+    // this.rows[index].visible = false;
     this.rows[index].clickTime = new Date().getTime() - this.rows[index].startTime;
     let selected = this.rows[index];
     if (selected.visible) {
@@ -87,7 +103,7 @@ export class GameManagerService {
       this.rows[index].visible = false;
       this.visibleCounter--;
       this.visibleSubject.next(this.rows);
-
+      this.points++;
 
     }
   }

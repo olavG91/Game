@@ -1,2 +1,19 @@
-Username: <input type="text">
-<button (click)="startGame()">Start new game </button>
+<button mat-raised-button color="primary" (click)="startGame()" *ngIf="gameManager.registered">Start new game </button>
+
+<form class="example-form" *ngIf="!gameManager.registered">
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="text"  matInput [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com">
+        <mat-hint>Errors appear instantly!</mat-hint>
+        <mat-error *ngIf="usernameFormControl.hasError('username') && !usernameFormControl.hasError('required')">
+            Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="usernameFormControl.hasError('required')">
+            Email is <strong>required</strong>
+        </mat-error>
+
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="registerUser('Simon')">Spara</button>
+</form>
+
+<button mat-raised-button color="primary">Primary</button>

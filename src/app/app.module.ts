@@ -9,6 +9,10 @@ import { StartComponent } from './start/start.component';
 import { TopComponent } from './top/top.component';
 import { StatusComponent } from './status/status.component';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+ 
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +24,10 @@ import { StatusComponent } from './status/status.component';
     StatusComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
