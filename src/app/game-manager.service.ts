@@ -21,6 +21,7 @@ export class GameManagerService {
   private visibleCounter = 0;
   // Timer för att visa en random mole
   private timer;
+  private moleTimer;
   // Timer för spelet
   private gameTimer;
   // Snabbaste reaktionstid vid klick på en mole
@@ -33,6 +34,7 @@ export class GameManagerService {
   registered: boolean = false;
   // Användarnamn
   username: string = "";
+  private rand = 2000;
   // Vid start skapa en array med 25st objekt
   constructor(public updateScore: UpdateScoreService) {
 
@@ -61,12 +63,23 @@ export class GameManagerService {
   }
   // Visa slumpmässig mole
   showRandom() {
-    if (this.visibleCounter < 4) {
+
+    if (this.gameStarted) {
+      this.moleTimer = setTimeout(() => {
+        this.showRandom();
+      }, this.rand);
+    }
+
+    if (this.visibleCounter < 2 && this.gameStarted) {
+
+      this.rand = Math.floor(Math.random() * (2000 - 100 + 1) + 100);
+      this.visibleCounter++;
+
       let randomIndex = Math.floor(Math.random() * this.rows.length);
       if (!this.rows[randomIndex].visible) {
         this.rows[randomIndex].visible = true;
         this.rows[randomIndex].startTime = new Date().getTime();
-        this.visibleCounter++;
+
         setTimeout(() => {
           this.rows[randomIndex].visible = false;
           this.visibleCounter--;
@@ -79,17 +92,14 @@ export class GameManagerService {
   // Ställ in speltimer vid start och nollställ när det är klart
   startGame() {
 
-
-
     this.gameStarted = true;
-    this.timer = setInterval(() => this.showRandom(), 2000);
-
-
+    this.showRandom();
 
     this.gameTimer = setTimeout(() => {
       clearInterval(this.timer);
       clearInterval(this.gameTimer);
       clearInterval(this.gameCount);
+      clearTimeout(this.moleTimer);
       this.gameStarted = false;
       this.timeLeft = 60;
 
@@ -105,15 +115,15 @@ export class GameManagerService {
   }
   // Vid tryck på en mole hantera speldata
   clickGameobject(index: number) {
-
     this.rows[index].clickTime = new Date().getTime() - this.rows[index].startTime;
     let selected = this.rows[index];
+    this.visibleCounter--;
     if (selected.visible) {
       let currentTime = new Date().getTime();
 
       clearTimeout(this.rows[index].timestamp);
       this.rows[index].visible = false;
-      this.visibleCounter--;
+
       this.visibleSubject.next(this.rows);
       this.points++;
       this.checkBestTime(this.rows[index].clickTime);
