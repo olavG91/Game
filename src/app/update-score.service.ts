@@ -5,36 +5,33 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UpdateScoreService {
-
+  // Referens till samling av objekt
   scoreList!: AngularFirestoreCollection<Stats>;
+  // Lagra samlingen
   scores: any;
-
+  // Skapa en referens till Firebase
   constructor(
     private __afs: AngularFirestore,
-  ) { 
+  ) {
     this.scoreList = this.__afs.collection('scores');
-
 
     this.getScores();
 
   }
-
-  getScores(){
+  // Returnera score
+  getScores() {
     return this.scoreList.snapshotChanges().pipe(
-        map(scores => {
-            return scores.map(score => {
-                const data = score.payload.doc.data();
-                const id = score.payload.doc.id;
-                return { id, ...data };
-            });
-        })
+      map(scores => {
+        return scores.map(score => {
+          const data = score.payload.doc.data();
+          const id = score.payload.doc.id;
+          return { id, ...data };
+        });
+      })
     );
-}
-
-
-
-
-  addScore(newScore:Stats) {
+  }
+  // Lägg till ny score
+  addScore(newScore: Stats) {
 
     this.scoreList.add(newScore)
       .then(() => {
@@ -46,8 +43,6 @@ export class UpdateScoreService {
       })
 
   }
-
-
 
 }
 
