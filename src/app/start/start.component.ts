@@ -13,8 +13,6 @@ export class StartComponent {
 
   usernameInput: string;
 
-  usernameFormControl = new FormControl('', [Validators.minLength(3)]);
-
   startGame() {
 
 
@@ -24,10 +22,8 @@ export class StartComponent {
 
   registerUser() {
 
-    if (this.usernameFormControl.valid) {
+    if (this.usernameInput.length >= 3) {
       this.gameManager.registerUser(this.usernameInput);
-    } else {
-      alert("Ogiltigt värde");
     }
 
   }
