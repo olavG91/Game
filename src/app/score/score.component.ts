@@ -24,7 +24,7 @@ export class ScoreComponent {
   bestPointsSource;
 
   //Ta in UpdateScoreService och prenumerera på getScores metoden.
-  constructor(public updateScore: UpdateScoreService){
+  constructor(public updateScore: UpdateScoreService) {
 
     this.updateScore.getScores().subscribe(scores => {
       this.dataSource = scores;
@@ -38,8 +38,8 @@ export class ScoreComponent {
   }
 
   // Få ut snabbaste spelaren
-  getFastest(){
-    this.dataSource.sort((a,b) => a.bestTime - b.bestTime);
+  getFastest() {
+    this.dataSource.sort((a, b) => a.bestTime - b.bestTime);
     this.fastestSource = this.dataSource;
     console.log("Yes");
     console.log(this.dataSource);
@@ -48,11 +48,11 @@ export class ScoreComponent {
   }
 
   // Sortera så att högst poäng hamnar först
-  getBestPoints(){
+  getBestPoints() {
 
-    this.dataSource.sort((a,b) => b.points - a.points);
+    this.dataSource.sort((a, b) => b.points - a.points);
     this.bestPointsSource = this.dataSource.slice(0, 10);
-    
+
 
 
   }

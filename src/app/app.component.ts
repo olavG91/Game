@@ -9,10 +9,10 @@ import { GameManagerService } from './game-manager.service';
 export class AppComponent {
   title = 'Game';
 
-  constructor(public gameManager: GameManagerService){}
-  
-  gameStarted:boolean = true;
-  gameFinished:boolean = true;
+  constructor(public gameManager: GameManagerService) { }
+
+  gameStarted: boolean = true;
+  gameFinished: boolean = true;
 
 
 }

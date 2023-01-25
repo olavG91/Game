@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class StatusComponent {
 
   // Inputs för att deklarera poäng och tid kvar
-  @Input() points:number = 0;
-  @Input() timeLeft:number = 0;
+  @Input() points: number = 0;
+  @Input() timeLeft: number = 0;
 
 }

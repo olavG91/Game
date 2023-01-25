@@ -8,13 +8,13 @@ import { GameManagerService } from '../game-manager.service';
 })
 export class GridComponent implements OnInit {
 
-  constructor(public gameManager: GameManagerService) {}
+  constructor(public gameManager: GameManagerService) { }
 
   ngOnInit(): void {
-      
+
   }
-// Om man trycker på en mole så skickas det till en funktion i gameManager.
-  clickGameobject(index:number){
+  // Om man trycker på en mole så skickas det till en funktion i gameManager.
+  clickGameobject(index: number) {
 
     this.gameManager.clickGameobject(index);
 

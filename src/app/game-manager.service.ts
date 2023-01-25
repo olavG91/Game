@@ -121,9 +121,9 @@ export class GameManagerService {
     }
   }
   // Kolla vilken tid som är snabbast
-  checkBestTime(time:number){
+  checkBestTime(time: number) {
 
-    if(this.bestTime > time){
+    if (this.bestTime > time) {
       this.bestTime = time;
     }
 

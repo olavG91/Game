@@ -10,7 +10,7 @@ describe('ScoreComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ScoreComponent ]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(ScoreComponent);
     component = fixture.componentInstance;
