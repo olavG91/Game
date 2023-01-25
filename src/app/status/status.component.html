@@ -1,4 +1,4 @@
-<div class="ml-4">
-<span class="points">{{points}}p</span>
-<span class="timeLeft ml-4">{{timeLeft}}s</span>
+<div class="ml-4 mr-4">
+    <span class="points">{{points}}p</span>
+    <span class="timeLeft ml-4" [ngClass]="{'lowTimeLeft': timeLeft < 10}">{{timeLeft}}s</span>
 </div>

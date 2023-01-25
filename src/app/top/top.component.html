@@ -5,8 +5,11 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse ml-auto d-flex justify-content-end" id="navbarNav">
-        <app-start></app-start>
+
+
         <app-status *ngIf="gameManager.gameStarted" [points]="gameManager.points"
             [timeLeft]="gameManager.timeLeft"></app-status>
+        <app-start></app-start>
+
     </div>
 </nav>

@@ -29,7 +29,7 @@ export class ScoreComponent {
 
   getFastest(){
     this.dataSource.sort((a,b) => a.bestTime - b.bestTime);
-    this.fastestSource = this.dataSource[0];
+    this.fastestSource = this.dataSource;
     console.log("Yes");
     console.log(this.dataSource);
     console.log("Other");
@@ -41,6 +41,7 @@ export class ScoreComponent {
     this.dataSource.sort((a,b) => b.points - a.points);
     this.bestPointsSource = this.dataSource.slice(0, 10);
     
+
 
   }
 

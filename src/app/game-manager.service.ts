@@ -87,6 +87,7 @@ export class GameManagerService {
 
       this.updateScores();
       this.points = 0;
+      this.bestTime = 990;
     }, 60000);
 
     this.gameCount = setInterval(() => {

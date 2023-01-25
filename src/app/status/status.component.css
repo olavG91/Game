@@ -5,3 +5,7 @@
 .timeLeft {
     font-size: 36px;
 }
+
+.lowTimeLeft {
+    color: #b13838;
+}
