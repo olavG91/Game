@@ -8,17 +8,12 @@ import { GameManagerService } from '../game-manager.service';
 })
 export class GameobjectComponent {
 
+  //Inputs för att deklarera om gameobject är visible eller inte samt ett id nummer.
   @Input() visible: boolean;
   @Input() id: number;
 
   constructor(private gameManager: GameManagerService) { }
 
-  // ngOnInit() {
-  //   this.gameManager.visible$.subscribe(rows => {
-  //     this.visible = rows[this.id].visible;
-  //     console.log("New change");
-  //   });
-  //   console.log("This id is: "+ this.id);
-  // }
+
 
 }

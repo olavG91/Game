@@ -6,8 +6,6 @@ import { map } from 'rxjs/operators';
 })
 export class UpdateScoreService {
 
-  // newScore: Stats = {} as Stats;
-
   scoreList!: AngularFirestoreCollection<Stats>;
   scores: any;
 

@@ -1,17 +1,21 @@
-<button mat-raised-button color="primary" (click)="startGame()" *ngIf="gameManager.registered" class="w-100" [disabled]="gameManager.gameStarted">Start new game </button>
+<div class="d-flex">
+    <button mat-raised-button color="primary" (click)="startGame()" *ngIf="gameManager.registered" class="w-100"
+        [disabled]="gameManager.gameStarted">Start new game </button>
 
-<div class="example-form" *ngIf="!gameManager.registered">
+    <div class="example-form mb-2" *ngIf="!gameManager.registered">
 
-    <div class="d-flex w-100">
-        <input [(ngModel)]="usernameInput" matInput id="username" placeholder=""
-            class="form-control">
+        <div class="d-flex w-100">
+            <input [(ngModel)]="usernameInput" matInput id="username" placeholder="Välj ett namn" class="form-control">
 
 
-        <button mat-raised-button color="primary" (click)="registerUser()" class="w-100">Spara</button>
+            <button mat-raised-button color="primary" (click)="registerUser()" class="">Spara</button>
+
+        </div>
     </div>
+
+
+    <form class="d-flex">
+        <button mat-raised-button color="secondary" class=""
+            (click)="gameManager.gameStarted = false">Leaderboard</button>
+    </form>
 </div>
-
-
-<form>
-    <button mat-raised-button color="primary" class="w-100" (click)="gameManager.gameStarted = false">Leaderboard</button>
-</form>

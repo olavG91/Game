@@ -13,7 +13,7 @@ export class GridComponent implements OnInit {
   ngOnInit(): void {
       
   }
-
+// Om man trycker på en mole så skickas det till en funktion i gameManager.
   clickGameobject(index:number){
 
     this.gameManager.clickGameobject(index);

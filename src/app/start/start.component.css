@@ -1,3 +1,7 @@
 form {
     display: inline;
 }
+
+.example-form {
+    width: 400px;
+}
