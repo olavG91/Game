@@ -11,13 +11,13 @@ export class StartComponent {
 
   constructor(public gameManager: GameManagerService) { }
 
-  username:string;
+  usernameInput: string;
 
-  matcher = new ErrorStateMatcher();
-  usernameFormControl = new FormControl('', [
-    Validators.required,
-    Validators.minLength(3)
-  ]);
+  formData: FormObject = {
+    username: ""
+  }
+
+  usernameFormControl = new FormControl('', [Validators.minLength(3)]);
 
   startGame() {
 
@@ -26,9 +26,21 @@ export class StartComponent {
 
   }
 
-  registerUser(user:string){
+  registerUser() {
 
-    this.gameManager.registerUser(user);
-    alert(user)
+    if (this.usernameFormControl.valid) {
+      this.gameManager.registerUser(this.usernameInput);
+      // alert(this.usernameInput)
+      console.log(this.formData);
+    } else {
+      alert("Ogiltigt värde");
+    }
+
   }
+
+
+}
+
+type FormObject = {
+  username: string;
 }

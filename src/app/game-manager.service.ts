@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { UpdateScoreService } from './update-score.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,16 +18,16 @@ export class GameManagerService {
   private timer;
   private gameTimer;
 
-  private bestTime = 0;
+  private bestTime = 990;
 
   private gameCount;
   timeLeft = 60;
 
   points = 0;
 
-  registered:boolean = false;
-  username:string = "";
-  constructor() {
+  registered: boolean = false;
+  username: string = "";
+  constructor(public updateScore: UpdateScoreService) {
 
     for (let i = 0; i < 25; i++) {
       this.rows.push({
@@ -45,7 +46,7 @@ export class GameManagerService {
     return this.rows;
   }
 
-  registerUser(user:string){
+  registerUser(user: string) {
 
     this.username = user;
     this.registered = true;
@@ -75,7 +76,7 @@ export class GameManagerService {
     this.gameStarted = true;
     this.timer = setInterval(() => this.showRandom(), 2000);
 
-    alert("Game started");
+
 
     this.gameTimer = setTimeout(() => {
       clearInterval(this.timer);
@@ -83,6 +84,9 @@ export class GameManagerService {
       clearInterval(this.gameCount);
       this.gameStarted = false;
       this.timeLeft = 60;
+
+      this.updateScores();
+      this.points = 0;
     }, 60000);
 
     this.gameCount = setInterval(() => {
@@ -104,8 +108,28 @@ export class GameManagerService {
       this.visibleCounter--;
       this.visibleSubject.next(this.rows);
       this.points++;
+      this.checkBestTime(this.rows[index].clickTime);
 
     }
+  }
+
+  checkBestTime(time:number){
+
+    if(this.bestTime > time){
+      this.bestTime = time;
+    }
+
+  }
+  
+  updateScores() {
+
+
+    this.updateScore.addScore({
+      name: this.username,
+      points: this.points,
+      bestTime: this.bestTime
+    });
+
   }
 
 }

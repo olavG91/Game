@@ -11,12 +11,12 @@
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 100px 100px 100px 100px 100px;
+    grid-template-rows: 120px 120px 120px 120px 120px;
     grid-gap: 4px;
 }
 
 .col {
-    background-color: #524141;
+    background-color: #6f451c;
     padding: 10px;
     border: 4px solid #1d1a1a;
     border-radius: 10px;
@@ -41,7 +41,7 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    background-color: #1d1a1a;
+    /* background-color: #1d1a1a; */
     /* animation: dig 0.2s ease-in-out; */
 
 }
@@ -62,4 +62,3 @@
 .colActive img {
     animation: moleMove 1s ease-in-out;
 }
-

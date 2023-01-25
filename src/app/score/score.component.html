@@ -1,8 +1,57 @@
-<h1>high score</h1>
-<ul>
-    <li>Simon <span>10 p</span></li>
-    <li>Olav <span>20 p</span></li>
-</ul>
+<div class="container mt-4">
+<h1>Topplista </h1>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 shadow mt-4">
 
-<h3>Best reactiontime</h3>
-<p>Simon 43ms</p>
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Användarnamn</th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="points">
+    <th mat-header-cell *matHeaderCellDef>Poäng</th>
+    <td mat-cell *matCellDef="let element"> {{element.points}} </td>
+  </ng-container>
+
+
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<h2 class="mt-4">Snabbast</h2>
+<table mat-table class="mat-elevation-z8 shadow mb-4 mt-4">
+
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Användarnamn</th>
+    <td mat-cell>{{fastestSource.name}}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="points">
+    <th mat-header-cell *matHeaderCellDef>Poäng</th>
+    <td mat-cell>{{fastestSource.points}}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="bestTime">
+    <th mat-header-cell *matHeaderCellDef>Tid</th>
+    <td mat-cell>{{fastestSource.bestTime}}</td>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumnsFast"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumnsFast;"></tr>
+</table>
+</div>
